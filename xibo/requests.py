@@ -1,6 +1,4 @@
 import requests
-import environ
-
 
 
 xibo_cms_domain = 'http://sinage.ceit.aut.ac.ir'
