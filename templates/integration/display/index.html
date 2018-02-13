@@ -1,0 +1,6 @@
+{% extends "integration/layout/base.html" %}
+{% block content %}
+    {% for display in displays %}
+        <h1>{{ display.displayId }}</h1>
+    {% endfor %}
+{% endblock %}
