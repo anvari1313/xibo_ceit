@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+# Model of displays
+class Display(models.Model):
+    display = models.CharField(max_length=300)
