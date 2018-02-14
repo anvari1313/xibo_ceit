@@ -28,7 +28,7 @@ SECRET_KEY = 'c5o324@gd0+v2w^7qrb$#60a6kyll&jx8*!(&4a$@pnb^42++f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [dotenv.get('HOST')]
 
 
 # Application definition
