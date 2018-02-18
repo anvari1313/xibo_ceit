@@ -2,20 +2,11 @@ import requests
 import dotenv
 from .exception import CanNotAuthorize
 
-xibo_cms_domain = 'http://xibo.ceit.aut.ac.ir'
+xibo_cms_domain = dotenv.get('XIBO_CMS_SERVER_PROTOCOL') + '://' + dotenv.get('XIBO_CMS_DOMAIN') + ':' + str(dotenv.get('XIBO_CMS_SERVER_PORT')) + dotenv.get('XIBO_CMS_ROOT_ROUTE', '')
 
-client_id = dotenv.get('CLIENT_ID')
+client_id = dotenv.get('XIBO_CLIENT_ID')
 
-# client_secret = 'jaTZ09YERMvs2Ecf9WEsJtxXrW0g71WMvc' \
-#                 'ISvqM4gMAkDVDPzE4NE72AzKSFZ4HoAu3p' \
-#                 'Rw3NrO3k1B1aKlwyVvSmLEIpXKTKRQg1u2' \
-#                 'k19dkKYfjPBLVZHZkeIV36oJQurqEJ2TEd' \
-#                 'UV3yJ3mndzuK66qI4oO1qJ2MQMKgaxjJk9' \
-#                 'NjEhszUvZmPhch3qGpWwOIEkf835DvwQxy' \
-#                 '042ucItGf3CB19jPLjygWMwwYcAMnpGkQL' \
-#                 'rhcxUZQ6PuUX1IA2'
-
-client_secret = dotenv.get('CLIENT_SECRET')
+client_secret = dotenv.get('XIBO_CLIENT_SECRET')
 
 api_routes = {
     'authenticate': '/api/authorize/access_token',
@@ -50,10 +41,12 @@ class XiboRest:
     @staticmethod
     def __authenticate():
         url = xibo_cms_domain + api_routes['authenticate']
+        print('Url is : ' + url)
         payload = {'client_id': client_id, 'client_secret': client_secret, 'grant_type': 'client_credentials'}
         r = requests.post(url=url, data=payload)
         print('Authenticating')
         auth = r.json()
+        print(auth)
         XiboRest.request_headers['Authorization'] = auth['token_type'] + ' ' + auth['access_token']
 
     @staticmethod
@@ -80,3 +73,7 @@ class XiboRest:
 
         print(r.status_code)
         return r.json()
+
+    @staticmethod
+    def update_widget():
+        return 't'
