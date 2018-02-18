@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'integration.apps.IntegrationConfig',
+    'background_task'
 ]
 
 MIDDLEWARE = [
@@ -80,8 +81,12 @@ WSGI_APPLICATION = 'xibo_ceit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': dotenv.get('POSTGRES_DATABASE'),
+        'USER': dotenv.get('POSTGRES_USER'),
+        'PASSWORD': dotenv.get('POSTGRES_PASSWORD'),
+        'HOST': dotenv.get('POSTGRES_HOST', '127.0.0.1'),
+        'PORT': dotenv.get('POSTGRES_PORT', '5432'),
     }
 }
 
