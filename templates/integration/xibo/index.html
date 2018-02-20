@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "integration/layout/base.html" %}
+{% block content %}
+    <h2>Layouts</h2>
+    {% for lay in layouts %}
+        <div class="row1">
+            <div class="card">
+                <div class="card-header">{{ lay.layout }}</div>
+                <div class="card-body">
+                    <ul>
+                        <li>Background Color: {{ lay.backgroundColor }}</li>
+                    </ul>
+                </div>
+                {#        <div class="card-footer">Footer</div>#}
+            </div>
+        </div>
+    {% endfor %}
+    <hr>
+    <h2>Displays</h2>
+    {% for display in displays %}
+        <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body">Content</div>
+            {#        <div class="card-footer">Footer</div>#}
+        </div>
+    {% endfor %}
+{% endblock %}
