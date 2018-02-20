@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from xibo.requests import XiboRest
-from task.task import task1
 
 
 def index(request):
@@ -27,7 +26,6 @@ class Display:
 
 
 def sync(request):
-    task1(12, repeat=1)
     r = XiboRest.get_time()
 
     return render(request, 'integration/index.html',  r)
