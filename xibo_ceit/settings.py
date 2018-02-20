@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'c5o324@gd0+v2w^7qrb$#60a6kyll&jx8*!(&4a$@pnb^42++f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(dotenv.get('DEBUG_FLAG'))
 
-ALLOWED_HOSTS = [dotenv.get('HOST')]
+ALLOWED_HOSTS = [dotenv.get('HOST'), '127.0.0.1']
 
 
 # Application definition
