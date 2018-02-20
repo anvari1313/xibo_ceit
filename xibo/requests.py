@@ -17,6 +17,9 @@ api_routes = {
     'display': '/api/display',
     'layout': {
         'all': '/api/layout'
+    },
+    'widget': {
+        'update': '/api/playlist/widget/%d'
     }
 }
 
@@ -81,5 +84,14 @@ class XiboRest:
         return r.json()
 
     @staticmethod
-    def update_widget():
-        return 't'
+    def update_widget(widget_id, text):
+        url = (xibo_cms_domain + api_routes['widget']['update']) % widget_id
+        print('Update url is : ' + url)
+        payload = {'text': text}
+        r = requests.put(url=url, data=payload, headers=XiboRest.request_headers)
+        if r.status_code / 100 != 2:
+            XiboRest.__authenticate()
+            r = requests.put(url=url, data=payload, headers=XiboRest.request_headers)
+
+        print(r.status_code)
+        return r.json()
