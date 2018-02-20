@@ -13,8 +13,11 @@ api_routes = {
     'clock': '/api/clock',
     # 'display': {
     #     'all': '/api/display'
-    # }
-    'display': '/api/display'
+    # },
+    'display': '/api/display',
+    'layout': {
+        'all': '/api/layout'
+    }
 }
 
 
@@ -25,14 +28,6 @@ def authenticate():
 
     auth = r.json()
     return {'Authorization': auth['token_type'] + ' ' + auth['access_token']}
-
-
-# def get_time():
-#     headers = authenticate()
-#     url = xibo_cms_domain + api_routes['clock']
-#     r = requests.get(url=url, headers=headers)
-#     print(dotenv.get('CLIENT_ID'))
-#     return r.json()
 
 
 class XiboRest:
@@ -66,6 +61,17 @@ class XiboRest:
     @staticmethod
     def get_all_displays():
         url = xibo_cms_domain + api_routes['display']
+        r = requests.get(url=url, headers=XiboRest.request_headers)
+        if r.status_code / 100 != 2:
+            XiboRest.__authenticate()
+            r = requests.get(url=url, headers=XiboRest.request_headers)
+
+        print(r.status_code)
+        return r.json()
+
+    @staticmethod
+    def get_all_layouts():
+        url = xibo_cms_domain + api_routes['layout']['all']
         r = requests.get(url=url, headers=XiboRest.request_headers)
         if r.status_code / 100 != 2:
             XiboRest.__authenticate()
