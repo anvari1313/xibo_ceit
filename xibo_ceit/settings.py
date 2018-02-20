@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'integration.apps.IntegrationConfig',
-    'background_task'
 ]
 
 MIDDLEWARE = [
