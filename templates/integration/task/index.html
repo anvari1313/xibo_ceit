@@ -1,0 +1,21 @@
+{% extends "integration/layout/base.html" %}
+{% block content %}
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Datetime</th>
+        <th>Widget ID</th>
+        <th>Text</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for task in task_list %}
+      <tr>
+        <td>{{ task.hour }} : {{ task.min }}</td>
+        <td>{{ task.widget }}</td>
+        <td>{{ task.text }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
