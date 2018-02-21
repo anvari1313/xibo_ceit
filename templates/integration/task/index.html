@@ -9,9 +9,9 @@
       </tr>
     </thead>
     <tbody>
-    {% for task in task_list %}
+    {% for task in taskschedule_list %}
       <tr>
-        <td>{{ task.hour }} : {{ task.min }}</td>
+        <td>{{ task.task_datetime_hour }} : {{ task.task_datetime_min }}</td>
         <td>{{ task.widget }}</td>
         <td>{{ task.text }}</td>
       </tr>
