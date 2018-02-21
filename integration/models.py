@@ -22,6 +22,8 @@ class Task(models.Model):
     task_datetime = models.DateTimeField
     widget = models.ForeignKey(Widget, on_delete=models.CASCADE)
     text = models.CharField(max_length=700)
+    task_datetime_hour = models.IntegerField(null=True)
+    task_datetime_min = models.IntegerField(null=True)
 
 
 class Layout(models.Model):
