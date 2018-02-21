@@ -25,6 +25,20 @@ class Task(models.Model):
     task_datetime_hour = models.IntegerField(null=True)
     task_datetime_min = models.IntegerField(null=True)
 
+    def __str__(self):
+        return 'text : ' + self.text
+
+
+class TaskSchedule(models.Model):
+    task_datetime = models.DateTimeField(null=True)
+    widget = models.ForeignKey(Widget, on_delete=models.CASCADE)
+    text = models.CharField(max_length=700)
+    task_datetime_hour = models.IntegerField(null=True)
+    task_datetime_min = models.IntegerField(null=True)
+
+    def __str__(self):
+        return 'text : ' + self.text
+
 
 class Layout(models.Model):
     layout_id = models.IntegerField(primary_key=True)
