@@ -1,16 +1,13 @@
 from django.http import JsonResponse
-import time
 from xibo.requests import XiboRest
-from integration.models import Task
+from integration.models import TaskSchedule
+import datetime
+
 
 def tick(request):
-    str = '<p style=\"text-align: center;\"><font color=\"#ffffff\"><span style=\"fon' \
-          't-size: 48px;\">مدار های الکتریکی دکتر ممتاز پور</span></font></p>\r\n\r\n<p style=\"' \
-          'text-align: center;\"><font color=\"#ffffff\"><span style=\"font-size: 48px;' \
-          '\">دکتر صبایی</span></font></p>\r\n'
+    now = datetime.datetime.now()
+    schedule_lists = TaskSchedule.objects.filter(task_datetime_hour=now.hour, task_datetime_min=now.minute)
+    for schedule in schedule_lists:
+        XiboRest.update_widget(widget_id=schedule.widget.widget_id, text=schedule.text)
 
-    result = XiboRest.update_widget(widget_id=7, text=str)
-
-    # Task.objects.filter(date)
-
-    return JsonResponse({'NOW': time.time(), 'res': result})
+    return JsonResponse({'NOW': now})
