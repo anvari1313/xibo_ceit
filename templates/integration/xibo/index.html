@@ -1,5 +1,10 @@
 {% extends "integration/layout/base.html" %}
 {% block content %}
+    <dvi>
+    <a href="{% url "xibo.update.widget" %}"><button type="button" class="btn btn-primary">Update Widget</button></a>
+    <a href="{% url "xibo.update.display" %}"><button type="button" class="btn btn-primary">Update Display</button></a>
+    <a href="{% url "xibo.update.layout" %}"><button type="button" class="btn btn-primary">Update Layout</button></a>
+    </dvi>
     <h2>Layouts</h2>
     {% for lay in layouts %}
         <div class="row1">
