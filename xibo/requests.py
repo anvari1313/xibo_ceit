@@ -11,14 +11,14 @@ client_secret = dotenv.get('XIBO_CLIENT_SECRET')
 api_routes = {
     'authenticate': '/api/authorize/access_token',
     'clock': '/api/clock',
-    # 'display': {
-    #     'all': '/api/display'
-    # },
-    'display': '/api/display',
+    'display': {
+        'all': '/api/display'
+    },
     'layout': {
         'all': '/api/layout'
     },
     'widget': {
+        'all': '/api/playlist/widget',
         'update': '/api/playlist/widget/%d'
     }
 }
@@ -63,7 +63,7 @@ class XiboRest:
 
     @staticmethod
     def get_all_displays():
-        url = xibo_cms_domain + api_routes['display']
+        url = xibo_cms_domain + api_routes['display']['all']
         r = requests.get(url=url, headers=XiboRest.request_headers)
         if r.status_code / 100 != 2:
             XiboRest.__authenticate()
@@ -80,7 +80,16 @@ class XiboRest:
             XiboRest.__authenticate()
             r = requests.get(url=url, headers=XiboRest.request_headers)
 
-        print(r.status_code)
+        return r.json()
+
+    @staticmethod
+    def get_all_widgets():
+        url = xibo_cms_domain + api_routes['widget']['all']
+        r = requests.get(url=url, headers=XiboRest.request_headers)
+        if r.status_code / 100 != 2:
+            XiboRest.__authenticate()
+            r = requests.get(url=url, headers=XiboRest.request_headers)
+
         return r.json()
 
     @staticmethod
