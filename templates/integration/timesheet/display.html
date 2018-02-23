@@ -1,0 +1,23 @@
+{% extends "integration/layout/base.html" %}
+{% block task_nav_activate %}active{% endblock %}
+{% block content %}
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            {% for displa in displays %}
+                <li class="list-group-item mx-auto" style="width: 200px;">
+                    {{ displa.display }}<a href="
+                    {% url 'timesheet.tabletime' displa.display_id %}
+">
+                    <button class="btn btn-default">This {{ displa.display_id }}</button></a>
+                </li>
+            {% endfor %}
+{#            #}
+{#            <li class="list-group-item"><button class="btn btn-default">This</button></li>#}
+{#            <li class="list-group-item"><button class="btn btn-default">This</button></li>#}
+{#            <li class="list-group-item"><button class="btn btn-default">This</button></li>#}
+{#            <li class="list-group-item"><button class="btn btn-default">This</button></li>#}
+{#            <li class="list-group-item">Dapibus ac facilisis in</li>#}
+{#            <li class="list-group-item">Vestibulum at eros</li>#}
+        </ul>
+    </div>
+{% endblock %}
