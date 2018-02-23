@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CEIT Sinage</title>
+    <title>CEIT Signage - {% block pagetitle %}{% endblock %}</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
@@ -17,12 +17,13 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="/static/integration/favicon.ico"/>
     {#        <link rel="stylesheet" href="{% static 'css/blog.css' %}">#}
 </head>
 <body>
 <header>
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="#">CEIT Sinage</a>
+        <a class="navbar-brand" href="#">CEIT Signage</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,7 +35,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/display/">Display</a>
+                    <a class="nav-link" href="{% url "xibo.index" %}">Xibo</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -42,10 +43,9 @@
                         Tasks
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url "task.new" %}">New Schedule</a>
-{#                        <a class="dropdown-item" href="#">Another action</a>#}
+                        <a class="dropdown-item" href="{% url "task.new" %}">New Immediate Schedule</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">New Schedule</a>
+                        <a class="dropdown-item" href="#">Set Time Sheet Schedule</a>
                     </div>
                 </li>
                 <li class="nav-item">
