@@ -31,10 +31,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item {% block home_nav_activate %}{% endblock %}">
+                    <a class="nav-link" href="/">Home
+                    </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% block xibo_nav_activate %}{% endblock %}">
                     <a class="nav-link" href="{% url "xibo.index" %}">Xibo</a>
                 </li>
                 <li class="nav-item dropdown">
