@@ -1,0 +1,29 @@
+{% extends "integration/layout/base.html" %}
+{% block task_nav_activate %}active{% endblock %}
+{% block pagetitle %}Schedule{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Week Day</th>
+            {% for timeslot in timeslots %}
+                <th>{{ timeslot.start }} - {{ timeslot.end }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for weekday in weekdays %}
+            <tr>
+                <td>{{ weekday }}</td>
+                {% for timeslot in timeslots %}
+                    <td><a href="/timesheet/display/{{ display_id }}/content?timeslot={{ timeslot.start }}">
+                        <button class="btn btn-primary">‌دکمه</button>
+                    </a>
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
