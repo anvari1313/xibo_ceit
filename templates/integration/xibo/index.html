@@ -1,31 +1,77 @@
 {% extends "integration/layout/base.html" %}
+{% block pagetitle %}Xibo{% endblock %}
 {% block content %}
-    <dvi>
-    <a href="{% url "xibo.update.widget" %}"><button type="button" class="btn btn-primary">Update Widget</button></a>
-    <a href="{% url "xibo.update.display" %}"><button type="button" class="btn btn-primary">Update Display</button></a>
-    <a href="{% url "xibo.update.layout" %}"><button type="button" class="btn btn-primary">Update Layout</button></a>
-    </dvi>
-    <h2>Layouts</h2>
-    {% for lay in layouts %}
-        <div class="row1">
-            <div class="card">
-                <div class="card-header">{{ lay.layout }}</div>
-                <div class="card-body">
-                    <ul>
-                        <li>Background Color: {{ lay.backgroundColor }}</li>
-                    </ul>
+    <div class="ml-auto mr-auto" style="width: 500px;">
+        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <a href="{% url "xibo.update.widget" %}" type="button" class="btn btn-secondary">Update Widget</a>
+            <a href="{% url "xibo.update.display" %}" type="button" class="btn btn-secondary">Update Display</a>
+            <a href="{% url "xibo.update.layout" %}" type="button" class="btn btn-secondary">Update Layout</a>
+        </div>
+    </div>
+
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#layouts" role="tab">Layouts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#displays" role="tab">Displays</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#widgets" role="tab">Widgets</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane mx-4 my-4" id="layouts" role="tabpanel">
+            {% for lay in layouts %}
+                <div class="row1 my-2">
+                    <div class="card">
+                        <div class="card-header">{{ lay.layout }}</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Background Color: {{ lay.backgroundColor }}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                {#        <div class="card-footer">Footer</div>#}
-            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-    <hr>
-    <h2>Displays</h2>
-    {% for display in displays %}
-        <div class="card">
-            <div class="card-header">Header</div>
-            <div class="card-body">Content</div>
-            {#        <div class="card-footer">Footer</div>#}
+        <div class="tab-pane mx-4 my-4" id="displays" role="tabpanel">
+            {% for display in displays %}
+                <div class="row1 my-2">
+                    <div class="card">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">Content</div>
+                        {#        <div class="card-footer">Footer</div>#}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+        <div class="tab-pane mx-4 my-4" id="widgets" role="tabpanel">
+            <table class="table">
+                <thead>
+
+                <tr>
+                    {% for widget_attr in widgets.attrs %}
+                        <th>{{ widget_attr }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for widget in widgets.values %}
+                    <tr>
+                        <td>{{ widget.widget_id }}</td>
+                        <td>{{ widget.name }}</td>
+                        <td>{{ widget.type }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

@@ -7,11 +7,18 @@ import xibo.requests
 class Xibo:
     @staticmethod
     def index(request):
-        layouts = XiboRest.get_all_layouts()
-        print(layouts)
-        displays = XiboRest.get_all_displays()
-        print(displays)
-        return render(request, 'integration/xibo/index.html', {'layouts': layouts, 'displays': displays})
+        # layouts = XiboRest.get_all_layouts()
+        # print(layouts)
+        layouts = Layout.objects.all()
+        displays = Display.objects.all()
+        widgets = Widget.objects.all()
+        return render(request, 'integration/xibo/index.html', {
+            'layouts': layouts,
+            'displays': displays,
+            'widgets': {
+                'attrs': ['widget_id', 'name', 'type'],
+                'values': widgets
+            }})
 
     @staticmethod
     def update_widget(request):
