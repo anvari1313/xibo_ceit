@@ -1,0 +1,58 @@
+{% extends "integration/layout/base.html" %}
+{% block task_nav_activate %}active{% endblock %}
+{% block pagetitle %}Schedule{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Week Day</th>
+            <th>7:45 - 9:15</th>
+            <th>9:15 - 10:45</th>
+            <th>10:45 - 12:15</th>
+            <th>12:15 - 13:30</th>
+            <th>13:30 - 15</th>
+            <th>15 - 16:30</th>
+            <th>16:30 - 18</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for k in t %}
+        <tr>
+            <td>{{ k }}</td>
+            <td><a href="https://www.google.com"><button class="btn btn-primary">‌دکمه</button></a></td>
+            <td><a href="https://www.google.com"><button class="btn btn-primary">‌دکمه</button></a></td>
+            <td><a href="https://www.google.com"><button class="btn btn-primary">‌دکمه</button></a></td>
+            <td><a href="https://www.google.com"><button class="btn btn-primary">‌دکمه</button></a></td>
+            <td><a href="https://www.google.com"><button class="btn btn-primary">‌دکمه</button></a></td>
+            <td><a href="https://www.google.com"><button class="btn btn-primary">‌دکمه</button></a></td>
+            <td><a href="https://www.google.com"><button class="btn btn-primary">‌دکمه</button></a></td>
+        </tr>
+        {% endfor %}
+{#        <tr>#}
+{#            <td>یکشنبه</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>دوشنبه</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#            <td>آمار حسینی</td>#}
+{#        </tr>#}
+
+        </tbody>
+    </table>
+
+    <form method="post" action="/timesheet/">
+    {% csrf_token %}
+    <input type="submit"/>
+    </form>
+{% endblock %}
