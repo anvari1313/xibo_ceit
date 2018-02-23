@@ -38,7 +38,7 @@
                 <li class="nav-item {% block xibo_nav_activate %}{% endblock %}">
                     <a class="nav-link" href="{% url "xibo.index" %}">Xibo</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {% block task_nav_activate %}{% endblock %}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tasks
@@ -46,11 +46,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url "task.new" %}">New Immediate Schedule</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Set Time Sheet Schedule</a>
+                        <a class="dropdown-item" href="{% url "timesheet.selectdisplay" %}">Set Time Sheet Schedule</a>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
