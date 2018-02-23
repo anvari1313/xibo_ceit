@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.urls import path
 
 
 from . import controller
@@ -8,6 +9,7 @@ from .views.user import login_user
 from .views.home import Home
 from .views.tick import tick
 from .views.task import Task, TaskListView
+from .views.timesheet import DisplaySelect, ScheduleDisplay, ScheduleContent
 from django.views.generic import TemplateView
 from util.http_helper import method_dispatch
 
@@ -28,5 +30,8 @@ urlpatterns = [
     url(r'task/new/$', method_dispatch(
         GET=TemplateView.as_view(template_name="integration/task/schedule.html"),
         POST=Task.new
-    ), name='task.new')
+    ), name='task.new'),
+    url(r'timesheet/$', DisplaySelect.as_view(), name="timesheet.selectdisplay"),
+    path('timesheet/display/<int:display_id>/', ScheduleDisplay.as_view(), name="timesheet.tabletime"),
+    path('timesheet/display/<int:display_id>/content', ScheduleContent.as_view(), name="timesheet.content")
 ]
