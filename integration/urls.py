@@ -7,7 +7,7 @@ from .controller import Display
 from .views.xibo import Xibo
 from .views.user import login_user
 from .views.home import Home
-from .views.tick import tick
+from .views.tick import MinuteTicker
 from .views.task import Task, TaskListView
 from .views.timesheet import DisplaySelect, ScheduleDisplay, ScheduleContent
 from django.views.generic import TemplateView
@@ -25,7 +25,8 @@ urlpatterns = [
     url(r'user/login/$', method_dispatch(
         POST=login_user,
         GET=TemplateView.as_view(template_name="integration/user/login.html")), name='user.login'),
-    url(r'tick/$', method_dispatch(GET=tick), name='tick'),
+    url(r'tick/every/minute/$', MinuteTicker.as_view(), name='tick.minute'),
+
     url(r'task/$', method_dispatch(GET=TaskListView.as_view()), name='task.index'),
     url(r'task/new/$', method_dispatch(
         GET=TemplateView.as_view(template_name="integration/task/schedule.html"),
@@ -33,5 +34,5 @@ urlpatterns = [
     ), name='task.new'),
     url(r'timesheet/$', DisplaySelect.as_view(), name="timesheet.selectdisplay"),
     path('timesheet/display/<int:display_id>/', ScheduleDisplay.as_view(), name="timesheet.tabletime"),
-    path('timesheet/display/<int:display_id>/content', ScheduleContent.as_view(), name="timesheet.content")
+    path('timesheet/display/<int:display_id>/content/', ScheduleContent.as_view(), name="timesheet.content")
 ]
