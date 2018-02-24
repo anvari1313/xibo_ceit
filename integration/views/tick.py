@@ -1,6 +1,9 @@
 from django.http import JsonResponse
+from django.views import View
+
 from xibo.requests import XiboRest
 from integration.models import TaskSchedule
+
 import datetime
 
 
@@ -11,3 +14,17 @@ def tick(request):
         XiboRest.update_widget(widget_id=schedule.widget.widget_id, text=schedule.text)
 
     return JsonResponse({'NOW': now})
+
+
+class MinuteTicker(View):
+    def get(self, request, *args, **kwargs):
+        now = datetime.datetime.now()
+        dow = now.weekday()
+        schedule_lists = TaskSchedule.objects.filter(
+            task_datetime_hour=now.hour,
+            task_datetime_min=now.minute,
+            task_week_day=dow
+        )
+        for schedule in schedule_lists:
+            XiboRest.update_widget(widget_id=schedule.widget.widget_id, text=schedule.text)
+        return JsonResponse({'NOW': now, 'DOW': dow})
