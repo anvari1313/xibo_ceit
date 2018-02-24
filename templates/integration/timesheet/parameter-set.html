@@ -24,7 +24,7 @@
             <label for="exampleSelect2">Select Widget</label>
             <select name="widget_id" multiple class="form-control" id="widget">
                 {% for widget in widgets %}
-                    <option value="{{ widget.widget_id }}">{{ widget.name }}</option>
+                    <option value="{{ widget.widget_id }}">{{ widget.widget_id }} {{ widget.name }}</option>
                 {% endfor %}
             </select>
         </div>
