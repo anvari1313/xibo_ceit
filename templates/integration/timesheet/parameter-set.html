@@ -2,7 +2,37 @@
 {% block task_nav_activate %}active{% endblock %}
 {% block pagetitle %}Schedule{% endblock %}
 {% block content %}
-    <form>
-    <input type="text">
+    <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            Select Style
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </div>
+
+    <h1>This is text</h1>
+    <form action="/timesheet/display/{{ display_id }}/content/" method="post">
+        <input type="hidden" name="timeslot" value="{{ timeslot }}"/>
+        <input type="hidden" name="dow" value="{{ dow }}"/>
+        <div class="form-group">
+            <label for="exampleSelect2">Select Widget</label>
+            <select name="widget_id" multiple class="form-control" id="widget">
+                {% for widget in widgets %}
+                    <option value="{{ widget.widget_id }}">{{ widget.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <textarea class="form-control" name="text" id="text" rows="3"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary"/>
+        {% csrf_token %}
     </form>
 {% endblock %}

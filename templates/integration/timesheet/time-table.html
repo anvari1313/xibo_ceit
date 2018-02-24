@@ -15,9 +15,9 @@
 
         {% for weekday in weekdays %}
             <tr>
-                <td>{{ weekday }}</td>
+                <td>{{ weekday.day }}</td>
                 {% for timeslot in timeslots %}
-                    <td><a href="/timesheet/display/{{ display_id }}/content?timeslot={{ timeslot.start }}">
+                    <td><a href="/timesheet/display/{{ display_id }}/content?timeslot={{ timeslot.start }}&dow={{ weekday.dow }}">
                         <button class="btn btn-primary">‌دکمه</button>
                     </a>
                     </td>
