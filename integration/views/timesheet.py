@@ -1,6 +1,6 @@
 from django.views import View
 from django.shortcuts import render, redirect
-from integration.models import Display
+from integration.models import Display, TaskSchedule, Widget
 
 
 class DisplaySelect(View):
@@ -15,7 +15,10 @@ class ScheduleDisplay(View):
     def get(self, request, *args, **kwargs):
         display_id = kwargs.get('display_id', "any_default")
 
-        weekdays = ['Sunday', 'Monday', 'Tuesday', 'wednesday', 'Thursday', 'Friday', 'Saturday']
+        weekdays = [
+            {'day':'Sunday', 'dow': 0}, {'day':'Monday', 'dow': 1}, {'day':'Tuesday', 'dow': 2},
+            {'day':'wednesday', 'dow': 3}, {'day':'Thursday', 'dow': 4}, {'day':'Friday', 'dow': 5},
+            {'day':'Saturday', 'dow': 6}]
         timeslots = [
             {'start': '7:45', 'end': '9:15'},
             {'start': '9:15', 'end': '10:45'},
@@ -34,4 +37,28 @@ class ScheduleDisplay(View):
 class ScheduleContent(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'integration/timesheet/parameter-set.html')
+        print('This is code')
+        timeslot = self.request.GET.get('timeslot')
+        dow = self.request.GET.get('dow')
+        widgets = Widget.objects.all()
+
+        return render(request, 'integration/timesheet/parameter-set.html', {
+            'display_id': kwargs.get('display_id'),
+            'timeslot': timeslot,
+            'dow': dow,
+            'widgets': widgets
+        })
+
+    def post(self, request, *args, **kwargs):
+        display_id = kwargs.get('display_id')
+        timeslot = request.POST.get('timeslot')
+        dow = request.POST.get('dow')
+
+        widget_id = request.POST.get('widget_id')
+        text = request.POST.get('text')
+        hours, minutes = map(int, timeslot.split(':'))
+        widget = Widget(widget_id=widget_id)
+        task_schedule = TaskSchedule(widget=widget, task_datetime_min=minutes,
+                                     task_datetime_hour=hours, task_week_day=dow, text=text)
+        task_schedule.save()
+        return redirect('/timesheet/display/' + str(display_id) + '/')
