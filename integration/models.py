@@ -45,3 +45,8 @@ class TaskSchedule(models.Model):
 class Layout(models.Model):
     layout_id = models.IntegerField(primary_key=True)
     layout = models.CharField(max_length=300)
+
+
+class ClassTimeSlice(models.Model):
+    start_time = models.TimeField
+    end_time = models.TimeField
