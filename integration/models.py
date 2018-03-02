@@ -48,5 +48,6 @@ class Layout(models.Model):
 
 
 class ClassTimeSlice(models.Model):
-    start_time = models.TimeField
-    end_time = models.TimeField
+    id = models.IntegerField(primary_key=True)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
