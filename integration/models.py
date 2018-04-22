@@ -51,3 +51,12 @@ class ClassTimeSlice(models.Model):
     id = models.AutoField(primary_key=True)
     start_time = models.TimeField()
     end_time = models.TimeField()
+
+    def __str__(self):
+        return str(self.start_time.hour) + ':' + str(self.start_time.minute) \
+               + ' - ' + str(self.end_time.hour) + ':' + str(self.end_time.minute)
+
+
+class ClassRoom(models.Model):
+    name = models.CharField(max_length=200)
+    display = models.ForeignKey(Display, on_delete=models.CASCADE)
