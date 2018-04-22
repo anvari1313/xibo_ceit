@@ -1,0 +1,33 @@
+{% extends "integration/layout/base.html" %}
+{% block content %}
+    <form action="{% url "timeslice.class" %}" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for timeslice in timeslices %}
+                <tr>
+                    <td>{{ timeslice.start_time }}</td>
+                    <td>{{ timeslice.end_time }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><input type="text" name="start-time" class="form-control mb-2 mr-sm-2 mb-sm-0" id="start-time-input"
+                           placeholder="Start Time"></td>
+                <td><input type="text" name="end-time" class="form-control mb-2 mr-sm-2 mb-sm-0" id="start-time-end"
+                           placeholder="End Time"></td>
+                {% csrf_token %}
+            </tr>
+            </tbody>
+        </table>
+
+        <input type="submit" class="btn btn-primary btn-lg" value="Ok"/>
+    </form>
+
+    {#    <button type="button" class="btn btn-primary btn-lg">Large button</button>#}
+
+{% endblock %}
