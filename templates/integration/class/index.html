@@ -1,0 +1,24 @@
+{% extends "integration/layout/base.html" %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Classroom Name</th>
+            <th>Display ID</th>
+            <th>Routine program</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for class_room in class_rooms %}
+                <td>{{ class_room.id }}</td>
+                <td>{{ class_room.name }}</td>
+                <td>{{ class_room.display_id }}</td>
+                <td><a href="/classroom/{{ class_room.id }}"><button>Schedule</button></a></td>
+            {% endfor %}
+        </tr>
+
+        </tbody>
+    </table>
+{% endblock %}
