@@ -1,0 +1,52 @@
+{% extends "integration/layout/base.html" %}
+{% block content %}
+    <form method="post" action="{% url 'classroom.class_id' 1 %}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>نام درس</th>
+                <th>نام استاد</th>
+                <th>زمان</th>
+                <th>روز هفته</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for schedule in schedules %}
+                <tr>
+                    <td>{{ schedule.teacher_name }}</td>
+                    <td>{{ schedule.subject_name }}</td>
+                    <td>{{ schedule.start_time_hour }} : {{ schedule.start_time_min }}</td>
+                    <td>{{ schedule.week_day }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                {% csrf_token %}
+                <td><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
+                           placeholder="نام درس"></td>
+                <td><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="teacher-name" name="teacher-name"
+                           placeholder="نام استاد"></td>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" class="form-control mb-2" name="start-time-hour" id="start-time-hour">
+                        <input type="text" class="form-control mb-2" name="start-time-min" id="start-time-min"
+                               value="">
+                    </div>
+                </td>
+                <td>
+                    <select class="form-control" id="week-day-select" name="week-day">
+                        {% for week_day in week_days %}
+                            <option value="{{ week_day.id }}">{{ week_day.day }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary btn-lg">Large button</button>
+    </form>
+
+{% endblock %}
