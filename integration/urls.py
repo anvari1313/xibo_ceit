@@ -10,7 +10,10 @@ from .views.home import Home
 from .views.tick import MinuteTicker
 from .views.task import Task, TaskListView
 from .views.timesheet import DisplaySelect, ScheduleDisplay, ScheduleContent
+from .views.timeslice import ClassTimeSliceView
+from .views.classtimesheet import ClassTimeSheet
 from django.views.generic import TemplateView
+from .views.classroom import ClassRoomView, ClassRoomTable
 from util.http_helper import method_dispatch
 
 
@@ -34,5 +37,9 @@ urlpatterns = [
     ), name='task.new'),
     url(r'timesheet/$', DisplaySelect.as_view(), name="timesheet.selectdisplay"),
     path('timesheet/display/<int:display_id>/', ScheduleDisplay.as_view(), name="timesheet.tabletime"),
-    path('timesheet/display/<int:display_id>/content/', ScheduleContent.as_view(), name="timesheet.content")
+    path('timesheet/display/<int:display_id>/content/', ScheduleContent.as_view(), name="timesheet.content"),
+    path('class/table/', ClassTimeSheet.as_view(), name="somenameforpath"),
+    path('admin/timeslice/class/', ClassTimeSliceView.as_view(), name="timeslice.class"),
+    path('classroom/<int:classroom_id>/', ClassRoomTable.as_view(), name="classroom.class_id"),
+    path('admin/classroom/', ClassRoomView.as_view())
 ]
