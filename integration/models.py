@@ -60,7 +60,11 @@ class ClassTimeSlice(models.Model):
 class ClassRoom(models.Model):
     name = models.CharField(max_length=200)
     display = models.ForeignKey(Display, on_delete=models.CASCADE)
-
+    teacher_name_widget = models.ForeignKey(Widget, on_delete=models.CASCADE,
+                                            related_name='teacher_name_widget', null=True)
+    subject_name_widget = models.ForeignKey(Widget, on_delete=models.CASCADE,
+                                            related_name='subject_name_widget', null=True)
+    
     def __str__(self):
         return 'name: ' + str(self.name) + ', display'
 
@@ -75,3 +79,4 @@ class ClassroomSchedule(models.Model):
 
     def __str__(self):
         return 'Teacher Name: ' + self.teacher_name
+
