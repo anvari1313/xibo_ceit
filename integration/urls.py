@@ -41,5 +41,5 @@ urlpatterns = [
     path('class/table/', ClassTimeSheet.as_view(), name="somenameforpath"),
     path('admin/timeslice/class/', ClassTimeSliceView.as_view(), name="timeslice.class"),
     path('classroom/<int:classroom_id>/', ClassRoomTable.as_view(), name="classroom.class_id"),
-    path('admin/classroom/', ClassRoomView.as_view())
+    path('admin/classroom/', ClassRoomView.as_view(), name='classroom.index')
 ]
