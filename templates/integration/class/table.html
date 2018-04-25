@@ -1,6 +1,6 @@
 {% extends "integration/layout/base.html" %}
 {% block content %}
-    <form method="post" action="{% url 'classroom.class_id' 1 %}">
+    <form method="post" action="{% url 'classroom.class_id' class_room.id %}">
         <table class="table">
             <thead>
             <tr>
