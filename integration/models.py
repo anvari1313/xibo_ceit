@@ -1,5 +1,15 @@
 from django.db import models
 
+week_days_arr = [
+            'شنبه',
+            'یک شنبه',
+            'دو شنبه',
+            'سه شنبه',
+            'چهار شنبه',
+            'پنج شنبه',
+            'جمعه',
+        ]
+
 
 # Model of displays
 class Display(models.Model):
@@ -76,6 +86,9 @@ class ClassroomSchedule(models.Model):
     start_time_min = models.IntegerField()
     start_time_hour = models.IntegerField()
     classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE)
+
+    def get_week_day_name(self):
+        return week_days_arr[self.week_day]
 
     def __str__(self):
         return 'Teacher Name: ' + self.teacher_name
