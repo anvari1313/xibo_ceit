@@ -4,6 +4,7 @@ from integration.models import ClassRoom
 from integration.models import Display
 from integration.models import Widget
 from integration.models import ClassroomSchedule
+from integration.models import week_days_arr
 from django.views import View
 from django.http import Http404
 
@@ -44,7 +45,8 @@ class ClassRoomTable(View):
 
     # For showing the list of classroom time table
     def get(self, request, *args, **kwargs):
-        week_days = [
+
+        _week_days = [
             {'id': 0, 'day': 'شنبه'},
             {'id': 1, 'day': 'یک شنبه'},
             {'id': 2, 'day': 'دو شنبه'},
@@ -53,6 +55,8 @@ class ClassRoomTable(View):
             {'id': 5, 'day': 'پنج شنبه'},
             {'id': 6, 'day': 'جمعه'},
         ]
+        # for i in range(_week_days):
+        #     print(i)
 
         classroom_id = kwargs.get('classroom_id', "any_default")
         try:
@@ -62,7 +66,7 @@ class ClassRoomTable(View):
 
         schedules = ClassroomSchedule.objects.filter(classroom=class_room)
         return render(request, 'integration/class/table.html', {'class_room': class_room, 'schedules': schedules,
-                                                                'week_days': week_days})
+                                                                'week_days': _week_days})
 
     def post(self, request, *args, **kwargs):
         classroom_id = kwargs.get('classroom_id', "any_default")
