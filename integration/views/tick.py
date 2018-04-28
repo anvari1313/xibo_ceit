@@ -3,6 +3,7 @@ from django.views import View
 
 from xibo.requests import XiboRest
 from integration.models import TaskSchedule
+from integration.models import ClassRoom, ClassroomSchedule
 
 import datetime
 
@@ -27,4 +28,24 @@ class MinuteTicker(View):
         )
         for schedule in schedule_lists:
             XiboRest.update_widget(widget_id=schedule.widget.widget_id, text=schedule.text)
+
+        classroom_schedules = ClassroomSchedule.objects.filter(
+            start_time_hour=10,
+            start_time_min=45,
+            week_day=1)
+
+        for classroom_schedule in classroom_schedules:
+            XiboRest.update_widget(
+                widget_id=classroom_schedule.classroom.teacher_name_widget.widget_id,
+                text=classroom_schedule.teacher_name)
+            XiboRest.update_widget(
+                widget_id=classroom_schedule.classroom.subject_name_widget.widget_id,
+                text=classroom_schedule.subject_name)
+
+            print('T: ' + str(classroom_schedule.classroom.teacher_name_widget.widget_id) +
+                  ', ' + classroom_schedule.teacher_name)
+            print('S: ' + str(classroom_schedule.classroom.subject_name_widget.widget_id) +
+                  ', ' + classroom_schedule.subject_name)
+            print()
+
         return JsonResponse({'NOW': now, 'DOW': dow})
