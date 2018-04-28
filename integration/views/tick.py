@@ -30,9 +30,9 @@ class MinuteTicker(View):
             XiboRest.update_widget(widget_id=schedule.widget.widget_id, text=schedule.text)
 
         classroom_schedules = ClassroomSchedule.objects.filter(
-            start_time_hour=10,
-            start_time_min=45,
-            week_day=1)
+            start_time_hour=now.hour,
+            start_time_min=now.minute,
+            week_day=dow)
 
         updated_widgets = []
 
