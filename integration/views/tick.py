@@ -34,18 +34,33 @@ class MinuteTicker(View):
             start_time_min=45,
             week_day=1)
 
-        for classroom_schedule in classroom_schedules:
-            XiboRest.update_widget(
-                widget_id=classroom_schedule.classroom.teacher_name_widget.widget_id,
-                text=classroom_schedule.teacher_name)
-            XiboRest.update_widget(
-                widget_id=classroom_schedule.classroom.subject_name_widget.widget_id,
-                text=classroom_schedule.subject_name)
+        updated_widgets = []
 
+        for classroom_schedule in classroom_schedules:
+            teacher_widget_id = classroom_schedule.classroom.teacher_name_widget.widget_id
+            teacher_name = classroom_schedule.teacher_name
+            subject_widget_id = classroom_schedule.classroom.subject_name_widget.widget_id
+            subject_name = classroom_schedule.subject_name
+            XiboRest.update_widget(
+                widget_id=teacher_widget_id,
+                text=teacher_name)
+            XiboRest.update_widget(
+                widget_id=subject_widget_id,
+                text=subject_name)
+
+            updated_widgets.append({
+                'TEACHER':{
+                    'widget_id': teacher_widget_id,
+                    'widget_text': teacher_name
+                },
+                'SUBJECT': {
+                    'widget_id': subject_widget_id,
+                    'widget_text': subject_name
+                }})
             print('T: ' + str(classroom_schedule.classroom.teacher_name_widget.widget_id) +
                   ', ' + classroom_schedule.teacher_name)
             print('S: ' + str(classroom_schedule.classroom.subject_name_widget.widget_id) +
                   ', ' + classroom_schedule.subject_name)
             print()
 
-        return JsonResponse({'NOW': now, 'DOW': dow})
+        return JsonResponse({'NOW': now, 'DOW': dow, 'UPDATED_WIDGETS': updated_widgets})
