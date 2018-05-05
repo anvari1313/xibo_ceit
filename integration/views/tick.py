@@ -41,21 +41,24 @@ class MinuteTicker(View):
             teacher_name = classroom_schedule.teacher_name
             subject_widget_id = classroom_schedule.classroom.subject_name_widget.widget_id
             subject_name = classroom_schedule.subject_name
-            text_content = '<p style=\"text-align: right;\">' \
-                           '<span style=\"font-size: 48px;\">' \
-                           '{{teacher_name}}</span>' \
-                           '</p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n' \
-                           '<p style=\"text-align: right;\">' \
-                           '<span style=\"font-size: 48px;\">{{subject_name}}</span>' \
-                           '</p>\r\n'
-            formated_context = text_content.replace('{{teacher_name}}', teacher_name).replace('{{subject_name}}',
-                                                                                              subject_name)
+            # text_content = '<p style=\"text-align: right;\">' \
+            #                '<span style=\"font-size: 48px;\">' \
+            #                '{{teacher_name}}</span>' \
+            #                '</p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n' \
+            #                '<p style=\"text-align: right;\">' \
+            #                '<span style=\"font-size: 48px;\">{{subject_name}}</span>' \
+            #                '</p>\r\n'
+
+            text_content = '<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\"><span style=\"font-size:72px;\">{{subject_name}}</span></p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\"><span style=\"font-size:72px;\">{{teacher_name}}</span></p>\r'
+
+            formatted_context = text_content.replace('{{teacher_name}}', teacher_name).replace('{{subject_name}}',
+                                                                                               subject_name)
             XiboRest.update_widget(
                 widget_id=teacher_widget_id,
-                text=formated_context)
+                text=formatted_context)
             XiboRest.update_widget(
                 widget_id=subject_widget_id,
-                text=formated_context)
+                text=formatted_context)
 
             updated_widgets.append({
                 'TEACHER':{
