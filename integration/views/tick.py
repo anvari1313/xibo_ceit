@@ -4,7 +4,7 @@ from django.views import View
 from xibo.requests import XiboRest
 from integration.models import TaskSchedule
 from integration.models import ClassRoom, ClassroomSchedule
-
+import integration.globs
 import datetime
 
 
@@ -49,8 +49,8 @@ class MinuteTicker(View):
             #                '<span style=\"font-size: 48px;\">{{subject_name}}</span>' \
             #                '</p>\r\n'
 
-            text_content = '<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\"><span style=\"font-size:72px;\">{{subject_name}}</span></p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\"><span style=\"font-size:72px;\">{{teacher_name}}</span></p>\r'
-
+            # text_content = '<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\"><span style=\"font-size:72px;\">{{subject_name}}</span></p>\r\n\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n\r\n<p style=\"text-align: right;\"><span style=\"font-size:72px;\">{{teacher_name}}</span></p>\r'
+            text_content = integration.globs.class_content_temp
             formatted_context = text_content.replace('{{teacher_name}}', teacher_name).replace('{{subject_name}}',
                                                                                                subject_name)
             XiboRest.update_widget(
