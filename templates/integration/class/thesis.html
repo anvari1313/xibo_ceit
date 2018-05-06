@@ -1,7 +1,10 @@
 {% extends "integration/layout/base.html" %}
 {% block content %}
+    <div style="direction: rtl; text-align: right;">
+        <h1>{{ class_room.name }}</h1>
+    </div>
     <form method="post" action="{% url 'classroom.class_id' class_room.id %}">
-        <table class="table">
+        <table  style="direction: rtl; text-align: right;" class="table">
             <thead>
             <tr>
                 <th>عنوان پروژه</th>
@@ -9,6 +12,7 @@
                 <th>نام استاد راهنما</th>
                 <th>نام استاد داور ۱</th>
                 <th>نام استاد داور ۲</th>
+                <th>تاریخ</th>
                 <th>زمان</th>
                 <th></th>
             </tr>
@@ -20,28 +24,34 @@
                     <td>دکتر نیک آبادی</td>
                     <td>دکتر صفا بخش</td>
                     <td>دکتر رحمتی</td>
+                    <td>۹۷/۲/۱۸</td>
+                    <td>۱۲:۱۵</td>
                 </tr>
             <tr>
                 {% csrf_token %}
                 <td><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="teacher-name" name="teacher-name"
-                           placeholder="نام استاد"></td>
+                           placeholder="عنوان پروژه"></td>
                 <td><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
-                           placeholder="نام درس"></td>
+                           placeholder="نام دانشجو"></td>
                 <td>
-                    <div class="form-inline">
-                        <p>
-                            <input type="text" class="form-control mb-2" name="start-time-hour" id="start-time-hour">
-                            <input type="text" class="form-control mb-2" name="start-time-min" id="start-time-min"
-                                   value="">
-                        </p>
-                    </div>
+                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
+                           placeholder="استاد راهنما">
                 </td>
                 <td>
-                    <select class="form-control" id="week-day-select" name="week-day">
-                        {% for week_day in week_days %}
-                            <option value="{{ week_day.id }}">{{ week_day.day }}</option>
-                        {% endfor %}
-                    </select>
+                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
+                           placeholder="استاد داور ۱">
+                </td>
+                <td>
+                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
+                           placeholder="استاد داور ۲">
+                </td>
+                <td>
+                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
+                           placeholder="تاریخ">
+                </td>
+                <td>
+                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
+                           placeholder="زمان">
                 </td>
             </tr>
             </tbody>

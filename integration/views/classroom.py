@@ -75,8 +75,9 @@ class ClassRoomTable(View):
         except ClassRoom.DoesNotExist:
             raise Http404
 
-        start_time_min = request.POST.get('start-time-min')
-        start_time_hour = request.POST.get('start-time-hour')
+        start_time = request.POST.get('start-time')
+        start_time_hour = start_time.split(':')[0]
+        start_time_min = start_time.split(':')[1]
         teacher_name = request.POST.get('teacher-name')
         subject_name = request.POST.get('subject-name')
         week_day = request.POST.get('week-day')
