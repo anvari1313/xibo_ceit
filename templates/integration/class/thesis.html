@@ -1,0 +1,52 @@
+{% extends "integration/layout/base.html" %}
+{% block content %}
+    <form method="post" action="{% url 'classroom.class_id' class_room.id %}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>عنوان پروژه</th>
+                <th>نام دانشجو</th>
+                <th>نام استاد راهنما</th>
+                <th>نام استاد داور ۱</th>
+                <th>نام استاد داور ۲</th>
+                <th>زمان</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                    <td>طراحی عامل هوشمند تبدیل گفتار به متن</td>
+                    <td>احمد انواری</td>
+                    <td>دکتر نیک آبادی</td>
+                    <td>دکتر صفا بخش</td>
+                    <td>دکتر رحمتی</td>
+                </tr>
+            <tr>
+                {% csrf_token %}
+                <td><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="teacher-name" name="teacher-name"
+                           placeholder="نام استاد"></td>
+                <td><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subject-name" name="subject-name"
+                           placeholder="نام درس"></td>
+                <td>
+                    <div class="form-inline">
+                        <p>
+                            <input type="text" class="form-control mb-2" name="start-time-hour" id="start-time-hour">
+                            <input type="text" class="form-control mb-2" name="start-time-min" id="start-time-min"
+                                   value="">
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <select class="form-control" id="week-day-select" name="week-day">
+                        {% for week_day in week_days %}
+                            <option value="{{ week_day.id }}">{{ week_day.day }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary btn-lg">Add Schedule</button>
+    </form>
+
+{% endblock %}

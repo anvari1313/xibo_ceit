@@ -8,7 +8,8 @@
             <th>Display ID</th>
             <th>Teacher Name Layout</th>
             <th>Subject Name Layout</th>
-            <th>Routine program</th>
+            <th>Classroom scheduling</th>
+            <th>Thesis presentation scheduling</th>
         </tr>
         </thead>
         <tbody>
@@ -21,7 +22,12 @@
                 <td>{{ class_room.subject_name_widget.widget_id }} {{ class_room.subject_name_widget.name }}</td>
                 <td>
                     <a href="{% url 'classroom.class_id' class_room.id %}">
-                        <button>Schedule</button>
+                        <button class="btn btn-primary btn-md">Schedule</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'thesis.class_id' class_room.id %}">
+                        <button class="btn btn-primary btn-md">Schedule</button>
                     </a>
                 </td>
             </tr>
@@ -55,7 +61,7 @@
                     </select>
                 </td>
                 <td>
-                    <button type="submit" class="btn btn-primary btn-md">Add</button>
+                    <button type="submit" class="btn btn-success btn-lg">Add</button>
                 </td>
             </form>
         </tr>
