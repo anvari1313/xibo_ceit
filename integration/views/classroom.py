@@ -88,3 +88,30 @@ class ClassRoomTable(View):
                                                classroom=class_room)
         classroom_schedule.save()
         return redirect(reverse('classroom.class_id', args=[classroom_id]))
+
+
+class ClassRoomTableThesis(View):
+    # For showing the list of classroom time table
+    def get(self, request, *args, **kwargs):
+
+        _week_days = [
+            {'id': 0, 'day': 'شنبه'},
+            {'id': 1, 'day': 'یک شنبه'},
+            {'id': 2, 'day': 'دو شنبه'},
+            {'id': 3, 'day': 'سه شنبه'},
+            {'id': 4, 'day': 'چهار شنبه'},
+            {'id': 5, 'day': 'پنج شنبه'},
+            {'id': 6, 'day': 'جمعه'},
+        ]
+        # for i in range(_week_days):
+        #     print(i)
+
+        classroom_id = kwargs.get('classroom_id', "any_default")
+        try:
+            class_room = ClassRoom.objects.get(id=classroom_id)
+        except ClassRoom.DoesNotExist:
+            raise Http404
+
+        schedules = ClassroomSchedule.objects.filter(classroom=class_room)
+        return render(request, 'integration/class/thesis.html', {'class_room': class_room, 'schedules': schedules,
+                                                                'week_days': _week_days})
