@@ -17,8 +17,10 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="/static/integration/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="integration/favicon.ico"/>
     {#        <link rel="stylesheet" href="{% static 'css/blog.css' %}">#}
+    {% block head_segment %}
+    {% endblock %}
 </head>
 <body>
 <header>
@@ -32,8 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {% block home_nav_activate %}{% endblock %}">
-                    <a class="nav-link" href="/">Home
-                    </a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item {% block xibo_nav_activate %}{% endblock %}">
                     <a class="nav-link" href="{% url "xibo.index" %}">Xibo</a>
@@ -41,15 +42,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url "classroom.index" %}">Classroom</a>
                 </li>
+                <li class="nav-item {% block thesis_nav_activate %}{% endblock %}">
+                    <a class="nav-link" href="{% url "thesis" %}">Thesis</a>
+                </li>
                 <li class="nav-item dropdown {% block task_nav_activate %}{% endblock %}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tasks
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url "task.new" %}">New Immediate Schedule</a>
+                        <a class="dropdown-item" href="/">New Immediate Schedule</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url "timesheet.selectdisplay" %}">Set Time Sheet Schedule</a>
+                        <a class="dropdown-item" href="/">Set Time Sheet Schedule</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/class/table">Set Time Sheet Schedule</a>
                     </div>
@@ -60,7 +64,9 @@
                         Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url "timeslice.class" %}">Class Time Slice</a>
+                        <a class="dropdown-item" href="/">Class Time Slice</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url "templatetext.index" %}">Set template text</a>
                     </div>
                 </li>
             </ul>
