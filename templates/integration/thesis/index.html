@@ -1,0 +1,38 @@
+{% extends "integration/layout/base.html" %}
+{% block head_segment %}
+    {#    <script src="/static/ckeditor/ckeditor.js"/>#}
+    <script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
+{#    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">#}
+
+{% endblock %}
+{% block content %}
+    <textarea name="content" id="editor"></textarea>
+
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Display Name</th>
+                <th scope="col">Display Name Local IP Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for display in displays %}
+                <tr>
+                    <th scope="row"><input type="checkbox" class="form-check-input" checked></th>
+                    <td>{{ display.display }}</td>
+                    <td>{{ display.client_address }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+
+    </script>
+{% endblock %}
+
