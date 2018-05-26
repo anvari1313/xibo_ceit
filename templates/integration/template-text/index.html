@@ -1,0 +1,28 @@
+{% extends "integration/layout/base.html" %}
+{% block head_segment %}
+{#    <script src="/static/ckeditor/ckeditor.js"/>#}
+    <script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
+    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+    <script>
+    function fun() {
+        var data = ClassicEditor.instances.editor.getData();
+        alert(data)
+    }
+    </script>
+
+{% endblock %}
+{% block admin_nav_activate %}active{% endblock %}
+{% block content %}
+
+    <h1>    This is home</h1>
+    <button onclick="fun()">Click Me!</button>
+    <textarea name="content" id="editor"></textarea>
+    <script>
+
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+{% endblock %}
