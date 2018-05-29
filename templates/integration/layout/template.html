@@ -26,7 +26,20 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <script src="/static/sufee-dashboard/assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/plugins.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/main.js"></script>
 
+
+    <script src="/static/sufee-dashboard/assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/dashboard.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/widgets.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -63,7 +76,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Xibo Sync</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Display</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{% url "display.index" %}">Display</a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Layout</a></li>
                         </ul>
                     </li>
@@ -232,19 +245,7 @@
 
     <!-- Right Panel -->
 
-    <script src="/static/sufee-dashboard/assets/js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/plugins.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/main.js"></script>
 
-
-    <script src="/static/sufee-dashboard/assets/js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/dashboard.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/widgets.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="/static/sufee-dashboard/assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
     <script>
         ( function ( $ ) {
             "use strict";
