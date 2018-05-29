@@ -15,6 +15,7 @@ week_days_arr = [
 class Display(models.Model):
     display_id = models.IntegerField(primary_key=True)
     display = models.CharField(max_length=300)
+    alias = models.CharField(max_length=300, null=True, default="Room")
     client_address = models.CharField(max_length=15, null=True)
 
 
