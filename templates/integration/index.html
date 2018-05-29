@@ -1,119 +1,182 @@
-{% extends "integration/layout/base.html" %}
-    {% block home_nav_activate %}active{% endblock %}
+{% extends "integration/layout/template.html" %}
+{% block home_nav_activate %}active{% endblock %}
+{% block pagetitle %}
+    Dashboards
+{% endblock %}
 {% block content %}
-    <p>
-        Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to
-        emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool
-        for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or
-        layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words
-        and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's
-        not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it
-        actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
-        these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are
-        digraphs not to be found in the original.
+    {#    <div class="col-xl-3 col-lg-6">#}
+    {#            <div class="card">#}
+    {#                <div class="card-body">#}
+    {#                    <div class="stat-widget-one">#}
+    {#                        <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>#}
+    {#                        <div class="stat-content dib">#}
+    {#                            <div class="stat-text">Total Class</div>#}
+    {#                            <div class="stat-digit">1,012</div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {##}
+    {##}
+    {#        <div class="col-xl-3 col-lg-6">#}
+    {#            <div class="card">#}
+    {#                <div class="card-body">#}
+    {#                    <div class="stat-widget-one">#}
+    {#                        <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>#}
+    {#                        <div class="stat-content dib">#}
+    {#                            <div class="stat-text">New Customer</div>#}
+    {#                            <div class="stat-digit">961</div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {##}
+    {#        <div class="col-xl-3 col-lg-6">#}
+    {#            <div class="card">#}
+    {#                <div class="card-body">#}
+    {#                    <div class="stat-widget-one">#}
+    {#                        <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>#}
+    {#                        <div class="stat-content dib">#}
+    {#                            <div class="stat-text">Active Projects</div>#}
+    {#                            <div class="stat-digit">770</div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
 
-        In a professional context it often happens that private or corporate clients corder a publication to be made and
-        presented with the actual content still not being ready. Think of a news blog that's filled with content hourly
-        on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text
-        copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its
-        elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate
-        environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely
-        since the sixteenth century.
+    <div class="animated fadeIn">
+        <div class="row">
 
-        Lorem Ipsum: common examples
-        Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to
-        emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool
-        for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or
-        layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words
-        and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's
-        not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it
-        actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
-        these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are
-        digraphs not to be found in the original.
 
-        In a professional context it often happens that private or corporate clients corder a publication to be made and
-        presented with the actual content still not being ready. Think of a news blog that's filled with content hourly
-        on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text
-        copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its
-        elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate
-        environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely
-        since the sixteenth century.
-        Lorem Ipsum: common examples
-        Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to
-        emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool
-        for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or
-        layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words
-        and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's
-        not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it
-        actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
-        these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are
-        digraphs not to be found in the original.
-        In a professional context it often happens that private or corporate clients corder a publication to be made and
-        presented with the actual content still not being ready. Think of a news blog that's filled with content hourly
-        on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text
-        copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its
-        elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate
-        environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely
-        since the sixteenth century.
-        Lorem Ipsum: common examples
-    </p>
-    <p>
-        Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to
-        emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool
-        for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or
-        layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words
-        and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's
-        not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it
-        actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
-        these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are
-        digraphs not to be found in the original.
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Total Profit</div>
+                                <div class="stat-digit">1,012</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        In a professional context it often happens that private or corporate clients corder a publication to be made and
-        presented with the actual content still not being ready. Think of a news blog that's filled with content hourly
-        on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text
-        copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its
-        elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate
-        environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely
-        since the sixteenth century.
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">New Customer</div>
+                                <div class="stat-digit">961</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        Lorem Ipsum: common examples
-        Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to
-        emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool
-        for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or
-        layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words
-        and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's
-        not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it
-        actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
-        these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are
-        digraphs not to be found in the original.
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Active Projects</div>
+                                <div class="stat-digit">770</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        In a professional context it often happens that private or corporate clients corder a publication to be made and
-        presented with the actual content still not being ready. Think of a news blog that's filled with content hourly
-        on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text
-        copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its
-        elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate
-        environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely
-        since the sixteenth century.
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-link text-danger border-danger"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Referrals</div>
+                                <div class="stat-digit">2,781</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        Lorem Ipsum: common examples
-        Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to
-        emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool
-        for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or
-        layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words
-        and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's
-        not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it
-        actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
-        these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are
-        digraphs not to be found in the original.
 
-        In a professional context it often happens that private or corporate clients corder a publication to be made and
-        presented with the actual content still not being ready. Think of a news blog that's filled with content hourly
-        on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text
-        copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its
-        elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate
-        environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely
-        since the sixteenth century.
+            <div class="col-6 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <i class="fa fa-cogs bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light"></i>
+                            <div class="h5 text-secondary mb-0 mt-1">$4.999,50</div>
+                            <div class="text-muted text-uppercase font-weight-bold font-xs small">Income</div>
+                        </div>
+                        <div class="b-b-1 pt-3"></div>
+                        <hr>
+                        <div class="more-info pt-2" style="margin-bottom:-10px;">
+                            <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i
+                                    class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.col-->
+            <div class="col-6 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <i class="fa fa-laptop bg-info p-3 font-2xl mr-3 float-left text-light"></i>
+                            <div class="h5 text-secondary mb-0 mt-1">$4.999,50</div>
+                            <div class="text-muted text-uppercase font-weight-bold font-xs small">Income</div>
+                        </div>
+                        <div class="b-b-1 pt-3"></div>
+                        <hr>
+                        <div class="more-info pt-2" style="margin-bottom:-10px;">
+                            <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i
+                                    class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.col-->
+            <div class="col-6 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <i class="fa fa-moon-o bg-warning p-3 font-2xl mr-3 float-left text-light"></i>
+                            <div class="h5 text-secondary mb-0 mt-1">6</div>
+                            <div class="text-muted text-uppercase font-weight-bold font-xs small">Scheduled</div>
+                        </div>
+                        <div class="b-b-1 pt-3"></div>
+                        <hr>
+                        <div class="more-info pt-2" style="margin-bottom:-10px;">
+                            <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i
+                                    class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.col-->
+            <div class="col-6 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <i class="fa fa-bell bg-danger p-3 font-2xl mr-3 float-left text-light"></i>
+                            <div class="h5 text-secondary mb-0 mt-1">5</div>
+                            <div class="text-muted text-uppercase font-weight-bold font-xs small">Display assigned</div>
+                        </div>
+                        <div class="b-b-1 pt-3"></div>
+                        <hr>
+                        <div class="more-info pt-2" style="margin-bottom:-10px;">
+                            <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i
+                                    class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.col-->
 
-        Lorem Ipsum: common examples
-    </p>
+        </div><!-- .row -->
+    </div><!-- .animated -->
 {% endblock %}
