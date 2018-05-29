@@ -1,0 +1,55 @@
+{% extends "integration/layout/template.html" %}
+{% block home_nav_activate %}active{% endblock %}
+{% block pagetitle %}
+    Dashboards
+{% endblock %}
+{% block content %}
+    <script>
+
+    function editAliasName(textId) {
+         $("#edit-button-" + textId).hide();
+         $("#alias-text-col-" + textId).hide();
+         $("#alias-input-col-" + textId).show();
+    }
+    </script>
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title mb-3">Synced Displays</strong>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Display Name</th>
+                                <th scope="col">Alias Name</th>
+                                <th scope="col"></th>
+                                <th scope="col">Client Address</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for display in displays %}
+                                <tr>
+                                    <th scope="row">{{ display.display_id }}</th>
+                                    <td>{{ display.display }}</td>
+                                    <form action="{% url "display.alias" display.display_id %}" method="post">
+                                        {% csrf_token %}
+                                    <td id="alias-text-col-{{ display.display_id }}"><input id="alias-input-col-{{ display.display_id }}" name="alias-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" value="{{ display.alias }}"></td>
+                                        <td><button id="edit-button-{{ display.display_id }}" class="btn btn-outline-warning" type="submit">Edit Alias Name</button></td>
+                                    </form>
+
+                                    <td>{{ display.client_address }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- .row -->
+    </div><!-- .animated -->
+{% endblock %}
