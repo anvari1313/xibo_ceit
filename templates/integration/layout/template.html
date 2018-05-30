@@ -8,11 +8,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CEIT Digital Signage</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="description" content="CEIT Digital Signage">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="/static/integration/apple-icon.png">
+    <link rel="shortcut icon" href="/static/integration/favicon.ico">
 
     <link rel="stylesheet" href="/static/sufee-dashboard/assets/css/normalize.css">
     <link rel="stylesheet" href="/static/sufee-dashboard/assets/css/bootstrap.min.css">
@@ -123,9 +123,9 @@
 
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                       aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Hallway</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
+                        <li><i class="menu-icon fa fa-map-o"></i><a href="{% url "hallway.propagation.thesis" %}">Thesis Propagation</a></li>
                         <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
                     </ul>
                 </li>
