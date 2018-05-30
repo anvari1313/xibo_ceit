@@ -12,18 +12,26 @@ from django.http import Http404
 class ClassRoomView(View):
 
     def get(self, request, *args, **kwargs):
-        displays = Display.objects.all()
-        class_room = ClassRoom.objects.all()
-
-        displays = Display.objects.all()
-        teacher_name_widgets = Widget.objects.all()
-        subject_name_widgets = Widget.objects.all()
-        return render(request, 'integration/class/index.html', {
-            'displays': displays,
-            'class_rooms': class_room,
-            'teacher_name_widgets': teacher_name_widgets,
-            'subject_name_widgets': subject_name_widgets
-        })
+        # displays = Display.objects.all()
+        # class_room = ClassRoom.objects.all()
+        #
+        # displays = Display.objects.all()
+        # teacher_name_widgets = Widget.objects.all()
+        # subject_name_widgets = Widget.objects.all()
+        # return render(request, 'integration/class/index.html', {
+        #     'displays': displays,
+        #     'class_rooms': class_room,
+        #     'teacher_name_widgets': teacher_name_widgets,
+        #     'subject_name_widgets': subject_name_widgets
+        # })
+        if request.user.is_authenticated:
+            class_displays = Display.objects.filter(is_in_hallway=False).order_by('display_id')
+            print(class_displays)
+            return render(request, 'integration/class/index.html', {
+                'class_displays': class_displays,
+            })
+        else:
+            return redirect(reverse("user.login"))
 
     def post(self, request, *args, **kwargs):
         name = request.POST.get('classroom-name')
