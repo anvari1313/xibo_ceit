@@ -1,0 +1,49 @@
+{% extends "integration/layout/template.html" %}
+{% block head_segment %}
+{#    <script src="/static/ckeditor/ckeditor.js"/>#}
+    <script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
+    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+    <script>
+    function fun() {
+        var data = ClassicEditor.instances.editor.getData();
+        alert(data)
+    }
+    </script>
+
+{% endblock %}
+{% block pagetitle %}
+    Dashboards
+{% endblock %}
+{% block content %}
+
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title mb-3">Synced Displays</strong>
+                    </div>
+                    <div class="card-body">
+                        <h1>    This is home</h1>
+    <button onclick="fun()">Click Me!</button>
+    <textarea name="content" id="editor"></textarea>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- .row -->
+    </div><!-- .animated -->
+
+
+
+
+    <script>
+
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+{% endblock %}
