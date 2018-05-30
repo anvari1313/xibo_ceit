@@ -6,12 +6,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>CEIT Digital Signage</title>
+    <meta name="description" content="CEIT Digital Signage">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/static/integration/favicon.ico">
 
     <link rel="stylesheet" href="/static/sufee-dashboard/assets/css/normalize.css">
     <link rel="stylesheet" href="/static/sufee-dashboard/assets/css/bootstrap.min.css">
@@ -34,16 +34,16 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
-                    <a href="index.html">
-                        <img class="align-content" src="/static/sufee-dashboard/images/logo.png" alt="">
+                    <a href="{% url "home.index" %}">
+                        <h1>CEIT Digital Signage</h1>
                     </a>
                 </div>
                 <div class="login-form">
                     <form action="{% url "user.login" %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label>Email address</label>
-                            <input type="text" class="form-control" name="username" placeholder="Email">
+                            <label>Username</label>
+                            <input type="text" class="form-control" name="username" placeholder="Username">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
