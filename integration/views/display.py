@@ -17,7 +17,7 @@ class DisplayView(View):
             return redirect(reverse("user.login"))
 
 
-class DisplayAliasView(View):
+class DisplayEditView(View):
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             display_id = kwargs.get('display_id', "any_default")
@@ -26,8 +26,14 @@ class DisplayAliasView(View):
             except Display.DoesNotExist:
                 raise Http404
             alias_name = request.POST.get('alias-name')
+            is_in_hall = request.POST.get('is-in-hall')
+            if is_in_hall is None:
+                display.is_in_hallway = False
+            else:
+                display.is_in_hallway = True
+
             display.alias = alias_name
-            display.save(update_fields=['alias'])
+            display.save(update_fields=['alias', 'is_in_hallway'])
 
             return redirect(reverse('display.index'))
         else:
