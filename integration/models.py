@@ -17,6 +17,7 @@ class Display(models.Model):
     display = models.CharField(max_length=300)
     alias = models.CharField(max_length=300, null=True, default="Room")
     client_address = models.CharField(max_length=15, null=True)
+    is_in_hallway = models.NullBooleanField(default=False)
 
 
 class Widget(models.Model):
