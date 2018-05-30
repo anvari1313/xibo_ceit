@@ -6,11 +6,11 @@
 {% block content %}
     <script>
 
-    function editAliasName(textId) {
-         $("#edit-button-" + textId).hide();
-         $("#alias-text-col-" + textId).hide();
-         $("#alias-input-col-" + textId).show();
-    }
+        function editAliasName(textId) {
+            $("#edit-button-" + textId).hide();
+            $("#alias-text-col-" + textId).hide();
+            $("#alias-input-col-" + textId).show();
+        }
     </script>
     <div class="animated fadeIn">
         <div class="row">
@@ -26,23 +26,43 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Display Name</th>
                                 <th scope="col">Alias Name</th>
+                                <th scope="col">Is Hall Display</th>
                                 <th scope="col"></th>
                                 <th scope="col">Client Address</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for display in displays %}
-                                <tr>
-                                    <th scope="row">{{ display.display_id }}</th>
-                                    <td>{{ display.display }}</td>
-                                    <form action="{% url "display.alias" display.display_id %}" method="post">
-                                        {% csrf_token %}
-                                    <td id="alias-text-col-{{ display.display_id }}"><input id="alias-input-col-{{ display.display_id }}" name="alias-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" value="{{ display.alias }}"></td>
-                                        <td><button id="edit-button-{{ display.display_id }}" class="btn btn-outline-warning" type="submit">Edit Alias Name</button></td>
-                                    </form>
+                                <form action="{% url "display.alias" display.display_id %}" method="post">
+                                    <tr>
 
-                                    <td>{{ display.client_address }}</td>
-                                </tr>
+                                        <th scope="row">{{ display.display_id }}</th>
+                                        <td>{{ display.display }}</td>
+
+                                        {% csrf_token %}
+                                        <td id="alias-text-col-{{ display.display_id }}">
+                                            <input
+                                                id="alias-input-col-{{ display.display_id }}" name="alias-name"
+                                                type="text" class="form-control cc-name valid" data-val="true"
+                                                data-val-required="Please enter the name on card" autocomplete="cc-name"
+                                                aria-required="true" aria-invalid="false"
+                                                aria-describedby="cc-name-error" value="{{ display.alias }}">
+                                        </td>
+                                        <td>
+                                            <input name="is-in-hall" type="checkbox" class="form-check-input"
+                                                {% if display.is_in_hallway == True %} checked{% endif %}>
+                                        </td>
+                                        <td>
+                                            <button id="edit-button-{{ display.display_id }}"
+                                                    class="btn btn-outline-warning" type="submit">Submit changes
+                                            </button>
+                                        </td>
+
+
+                                        <td>{{ display.client_address }}</td>
+
+                                    </tr>
+                                </form>
                             {% endfor %}
                             </tbody>
                         </table>
