@@ -8,7 +8,7 @@ from django.urls import reverse
 class DisplayView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            displays = Display.objects.all()
+            displays = Display.objects.order_by('display_id')
 
             return render(request, 'integration/display/index.html', {
                 'displays': displays,
