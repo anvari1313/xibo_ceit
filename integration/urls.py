@@ -12,6 +12,7 @@ from django.views.generic import TemplateView
 from .views.classroom import ClassRoomView, ClassRoomTable, ClassRoomTableThesis
 from util.http_helper import method_dispatch
 
+from .views.template import TeachingTemplateView
 
 urlpatterns = [
     url(r'^$', Home.index, name="home.index"),
@@ -20,11 +21,15 @@ urlpatterns = [
     url(r'xibo/update/layout$', method_dispatch(GET=Xibo.update_layout), name='xibo.update.layout'),
     url(r'xibo/update/display', method_dispatch(GET=Xibo.update_display), name='xibo.update.display'),
 
+    # Refactor started
+    url(r'user/login/$', UserLoginView.as_view(), name='user.login'),
+    url(r'user/logout/$', UserLogoutView.as_view(), name='user.logout'),
+
     url(r'display/$', DisplayView.as_view(), name='display.index'),
     path('display/<int:display_id>/alias/', DisplayEditView.as_view(), name='display.alias'),
 
-    url(r'user/login/$', UserLoginView.as_view(), name='user.login'),
-    url(r'user/logout/$', UserLogoutView.as_view(), name='user.logout'),
+    path('template/teaching/', TeachingTemplateView.as_view(), name='template.teaching'),
+    # Refactor finished
 
 
     url(r'tick/every/minute/$', MinuteTicker.as_view(), name='tick.minute'),
