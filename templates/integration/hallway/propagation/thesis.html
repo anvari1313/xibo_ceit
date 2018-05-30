@@ -1,0 +1,98 @@
+{% extends "integration/layout/template.html" %}
+{% block pagetitle %}
+    Hallway Thesis Propagation
+{% endblock %}
+{% block content %}
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th scope="row">Presenter Name</th>
+                                <td>Ahmad Anvari</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Helper Teacher Name</th>
+                                <td>Ahmad Anvari</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="col">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target=".multi-collapse" aria-expanded="false"
+                                    aria-controls="multiCollapseExample1 multiCollapseExample2">Display List
+                            </button>
+                        </div>
+
+                        <div class="col">
+                            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                <div class="card card-body">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Display Name</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for hallway_display in hallway_displays %}
+                                            <tr>
+
+                                                <th scope="row">{{ hallway_display.display_id }}</th>
+                                                <td>{{ hallway_display.display }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title mb-3">Synced Displays</strong>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1"
+                               role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first
+                                element</a>
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#multiCollapseExample2" aria-expanded="false"
+                                    aria-controls="multiCollapseExample2">Toggle second element
+                            </button>
+
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                    <div class="card card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                                        anderson cred nesciunt sapiente ea proident.
+                                    </div>
+                                </div>
+                            </div>
+                            {#                            <div class="col">#}
+                            {#                                <div class="collapse multi-collapse" id="multiCollapseExample2">#}
+                            {#                                    <div class="card card-body">#}
+                            {#                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry#}
+                            {#                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes#}
+                            {#                                        anderson cred nesciunt sapiente ea proident.#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- .row -->
+    </div><!-- .animated -->
+{% endblock %}
