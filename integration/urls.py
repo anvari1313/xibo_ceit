@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.urls import path
 from .controller import Display
-from .views.display import DisplayView, DisplayAliasView
+from .views.display import DisplayView, DisplayEditView
 from .views.xibo import Xibo
 from .views.user import UserLoginView, UserLogoutView
 from .views.home import Home
@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'xibo/update/display', method_dispatch(GET=Xibo.update_display), name='xibo.update.display'),
 
     url(r'display/$', DisplayView.as_view(), name='display.index'),
-    path('display/<int:display_id>/alias/', DisplayAliasView.as_view(), name='display.alias'),
+    path('display/<int:display_id>/alias/', DisplayEditView.as_view(), name='display.alias'),
 
     url(r'user/login/$', UserLoginView.as_view(), name='user.login'),
     url(r'user/logout/$', UserLogoutView.as_view(), name='user.logout'),
