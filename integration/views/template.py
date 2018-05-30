@@ -1,0 +1,40 @@
+from django.shortcuts import render, redirect
+from integration.models import Display
+from django.views import View
+from django.http import Http404
+from django.urls import reverse
+
+
+class TeachingTemplateView(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            # displays = Display.objects.order_by('display_id')
+
+            return render(request, 'integration/template-text/teaching-class.html', {
+                # 'displays': displays,
+            })
+        else:
+            return redirect(reverse("user.login"))
+
+
+class DisplayEditView(View):
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            display_id = kwargs.get('display_id', "any_default")
+            try:
+                display = Display.objects.get(display_id=display_id)
+            except Display.DoesNotExist:
+                raise Http404
+            alias_name = request.POST.get('alias-name')
+            is_in_hall = request.POST.get('is-in-hall')
+            if is_in_hall is None:
+                display.is_in_hallway = False
+            else:
+                display.is_in_hallway = True
+
+            display.alias = alias_name
+            display.save(update_fields=['alias', 'is_in_hallway'])
+
+            return redirect(reverse('display.index'))
+        else:
+            return redirect(reverse("user.login"))
