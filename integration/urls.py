@@ -8,6 +8,7 @@ from .views.home import Home
 from .views.tick import MinuteTicker
 from .views.template_text import TemplateTextView
 from .views.thesis import ThesisView
+from .views.hallway import HallwayPropagationThesisView
 from django.views.generic import TemplateView
 from .views.classroom import ClassRoomView, ClassRoomTable, ClassRoomTableThesis
 from util.http_helper import method_dispatch
@@ -29,6 +30,7 @@ urlpatterns = [
     path('display/<int:display_id>/alias/', DisplayEditView.as_view(), name='display.alias'),
 
     path('template/teaching/', TeachingTemplateView.as_view(), name='template.teaching'),
+    path('hallway/propagation/thesis/', HallwayPropagationThesisView.as_view(), name='hallway.propagation.thesis'),
     # Refactor finished
 
 
