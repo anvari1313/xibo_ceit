@@ -26,6 +26,20 @@ class Widget(models.Model):
     type = models.CharField(max_length=20)
 
 
+class HallwayPropagationThesisSchedule(models.Model):
+    student_name = models.CharField(max_length=120)
+    teacher_name = models.CharField(max_length=120)
+    judge_teacher_name1 = models.CharField(max_length=120)
+    judge_teacher_name2 = models.CharField(max_length=120, null=True)
+    judge_teacher_name3 = models.CharField(max_length=120, null=True)
+    holding_year = models.IntegerField()
+    holding_month = models.IntegerField()
+    holding_day = models.IntegerField()
+    holding_hour = models.IntegerField()
+    holding_minute = models.IntegerField()
+    place = models.CharField(max_length=120, null=True)
+
+
 class Course(models.Model):
     name = models.CharField(max_length=300)
 
