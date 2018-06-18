@@ -8,12 +8,67 @@ from integration.models import week_days_arr
 from django.views import View
 from django.http import Http404
 from django.core.files.storage import FileSystemStorage
+from util.excel_parser import ExcelParser
+import xibo_ceit.settings
+import os
+
+
+class BulkClassSchedulingFileItem(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            file_name_url = kwargs.get('excel_file', "any_default")
+            print(file_name_url)
+            excel_file_list = os.listdir(xibo_ceit.settings.MEDIA_ROOT)
+
+            return render(request, 'integration/class/bulk.html', {'excel_file_list': excel_file_list})
+        else:
+            return redirect(reverse("user.login"))
+
+    def post(self, request, *args, **kwargs):
+        print(request.FILES)
+        if request.FILES['myfile']:
+            myfile = request.FILES['myfile']
+            fs = FileSystemStorage()
+            filename = fs.save(myfile.name, myfile)
+            uploaded_file_url = fs.url(filename)
+            return render(request, 'integration/class/bulk.html', {
+                'uploaded_file_url': uploaded_file_url
+            })
+        return render(request, 'admin/404.html')
+
+
+class BulkClassSchedulingFile(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            file_name_url = kwargs.get('excel_file', "any_default")
+            file_path = os.path.join(xibo_ceit.settings.MEDIA_ROOT, file_name_url)
+            parser = ExcelParser(file_path)
+            parser.parse()
+            return render(request, 'integration/class/excel-file/file.html', {'excel_headers': parser.cols,
+                                                                              'excel_contents': parser.rows
+                                                                              })
+        else:
+            return redirect(reverse("user.login"))
+
+    def post(self, request, *args, **kwargs):
+        print(request.FILES)
+        if request.FILES['myfile']:
+            myfile = request.FILES['myfile']
+            fs = FileSystemStorage()
+            filename = fs.save(myfile.name, myfile)
+            uploaded_file_url = fs.url(filename)
+            return render(request, 'integration/class/bulk.html', {
+                'uploaded_file_url': uploaded_file_url
+            })
+        return render(request, 'admin/404.html')
 
 
 class BulkClassScheduling(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return render(request, 'integration/class/bulk.html')
+            excel_file_list = os.listdir(xibo_ceit.settings.MEDIA_ROOT)
+
+            return render(request, 'integration/class/bulk.html', {'excel_file_list': excel_file_list})
         else:
             return redirect(reverse("user.login"))
 
