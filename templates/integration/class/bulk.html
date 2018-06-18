@@ -1,0 +1,30 @@
+{% extends "integration/layout/template.html" %}
+{% block pagetitle %}
+    Teaching Class Bulk Scheduling
+{% endblock %}
+{% block content %}
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">Example Form</div>
+                    <div class="card-body card-block">
+                        <form action="{% url "classroom.bulk" %}" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Excel File</div>
+                                    <input type="file" name="myfile">
+                                    <div class="input-group-addon"><i class="fa fa-file-excel-o"></i></div>
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                            <div class="form-actions form-group">
+                                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .row -->
+    </div><!-- .animated -->
+{% endblock %}
