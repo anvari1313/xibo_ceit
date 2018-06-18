@@ -1,6 +1,7 @@
 from django.http import HttpResponseNotAllowed
 from django.utils.cache import logger
 
+
 def method_dispatch(**table):
     def invalid_method(request, *args, **kwargs):
         logger.warning('Method Not Allowed (%s): %s', request.method, request.path,
