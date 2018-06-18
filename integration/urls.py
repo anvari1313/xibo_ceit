@@ -10,7 +10,7 @@ from .views.template_text import TemplateTextView
 from .views.thesis import ThesisView
 from .views.hallway import HallwayPropagationThesisView
 from django.views.generic import TemplateView
-from .views.classroom import ClassRoomView, ClassRoomTable, ClassRoomTableThesis
+from .views.classroom import ClassRoomView, ClassRoomTable, ClassRoomTableThesis, BulkClassScheduling
 from util.http_helper import method_dispatch
 
 from .views.template import TeachingTemplateView
@@ -38,6 +38,9 @@ urlpatterns = [
     path('classroom/rclass/<int:classroom_id>/', ClassRoomTable.as_view(), name="classroom.class_id"),
     path('classroom/thesis/<int:classroom_id>/', ClassRoomTableThesis.as_view(), name="thesis.class_id"),
     path('admin/classroom/', ClassRoomView.as_view(), name='classroom.index'),
+    path('admin/classroom/bulk/', BulkClassScheduling.as_view(),
+         name='classroom.bulk'),
+
     path('admin/templatetext/', TemplateTextView.as_view(), name='templatetext.index'),
     path('thesis/', ThesisView.as_view(), name='thesis'),
     url(r'ad/$', method_dispatch(
