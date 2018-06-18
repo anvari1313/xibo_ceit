@@ -7,6 +7,27 @@ from integration.models import ClassroomSchedule
 from integration.models import week_days_arr
 from django.views import View
 from django.http import Http404
+from django.core.files.storage import FileSystemStorage
+
+
+class BulkClassScheduling(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return render(request, 'integration/class/bulk.html')
+        else:
+            return redirect(reverse("user.login"))
+
+    def post(self, request, *args, **kwargs):
+        print(request.FILES)
+        if request.FILES['myfile']:
+            myfile = request.FILES['myfile']
+            fs = FileSystemStorage()
+            filename = fs.save(myfile.name, myfile)
+            uploaded_file_url = fs.url(filename)
+            return render(request, 'integration/class/bulk.html', {
+                'uploaded_file_url': uploaded_file_url
+            })
+        return render(request, 'admin/404.html')
 
 
 class ClassRoomView(View):
@@ -47,6 +68,7 @@ class ClassRoomView(View):
                               teacher_name_widget=teacher_name_widget, subject_name_widget=subject_name_widget)
         classroom.save()
         return redirect(reverse('classroom.index'))
+
 
 
 class ClassRoomTable(View):
