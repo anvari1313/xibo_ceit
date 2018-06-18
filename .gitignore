@@ -157,3 +157,6 @@ crashlytics-build.properties
 fabric.properties
 
 .idea/*
+
+media/*
+!media/.gitkeep
