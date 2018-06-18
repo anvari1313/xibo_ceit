@@ -1,0 +1,39 @@
+{% extends "integration/layout/template.html" %}
+{% block pagetitle %}
+    Teaching Class Bulk Scheduling
+{% endblock %}
+
+{% block content %}
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Basic Table</strong>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                {% for excel_header in excel_headers %}
+                                    <th scope="col">{{ excel_header }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for excel_content in excel_contents %}
+                                <tr>
+                                {% for item in excel_content %}
+                                    <th scope="row">{{ item }}</th>
+                                {% endfor %}
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .row -->
+    </div><!-- .animated -->
+{% endblock %}
