@@ -17,8 +17,8 @@ class Home:
             # print(datetime.datetime.now().minute)
             return render(request, 'integration/index.html', {
                 'user': {'name': 'user1'},
-                'local_time_hour': jdatetime.datetime.now().hour,
-                'local_time_minute': jdatetime.datetime.now().minute,
+                'local_time_hour': datetime.datetime.now().hour,
+                'local_time_minute': datetime.datetime.now().minute,
 
                 'local_date_year': jdatetime.datetime.now().year,
                 'local_date_month': month_name(jdatetime.datetime.now().month),
