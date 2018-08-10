@@ -25,7 +25,7 @@ __jalali_weekdays = [
 
 
 def month_name(month_index):
-    return __jalali_month[month_index]
+    return __jalali_month[month_index - 1]
 
 
 def weekday_name(weekday_index):
