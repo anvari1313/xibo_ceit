@@ -3,3 +3,4 @@ environ
 django
 requests
 xlrd
+jdatetime
