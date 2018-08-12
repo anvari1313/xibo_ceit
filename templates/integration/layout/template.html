@@ -84,7 +84,7 @@
                        aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Xibo Sync</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-th"></i><a href="{% url "display.index" %}">Display</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Layout</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{% url "xibo.index" %}">Layout</a></li>
                     </ul>
                 </li>
 
@@ -106,6 +106,14 @@
                         <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{% url "classroom.bulk" %}">Teaching Class</a>
                         </li>
                         <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Propagation </a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Upload</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{% url "upload.image" %}">Upload Image</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
