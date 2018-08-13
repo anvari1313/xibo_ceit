@@ -1,22 +1,24 @@
 from django.http import JsonResponse
 from django.views import View
-
+from integration.models import ClassroomSchedule
 from xibo.requests import XiboRest
 import integration.globs
-import datetime
+import jdatetime
 
 
 class MinuteTicker(View):
     def get(self, request, *args, **kwargs):
-        now = datetime.datetime.now()
-        dow = now.weekday()
-        schedule_lists = TaskSchedule.objects.filter(
-            task_datetime_hour=now.hour,
-            task_datetime_min=now.minute,
-            task_week_day=dow
-        )
-        for schedule in schedule_lists:
-            XiboRest.update_widget(widget_id=schedule.widget.widget_id, text=schedule.text)
+        _now = str(jdatetime.datetime.now())
+        dow = jdatetime.datetime.now().weekday()
+        print(dow)
+        now = jdatetime.datetime.now()
+        # schedule_lists = TaskSchedule.objects.filter(
+        #     task_datetime_hour=now.hour,
+        #     task_datetime_min=now.minute,
+        #     task_week_day=dow
+        # )
+        # for schedule in schedule_lists:
+        #     XiboRest.update_widget(widget_id=schedule.widget.widget_id, text=schedule.text)
 
         classroom_schedules = ClassroomSchedule.objects.filter(
             start_time_hour=now.hour,
@@ -64,4 +66,9 @@ class MinuteTicker(View):
                   ', ' + classroom_schedule.subject_name)
             print()
 
-        return JsonResponse({'NOW': now, 'DOW': dow, 'UPDATED_WIDGETS': updated_widgets})
+        return JsonResponse({
+            'NOW': _now,
+            'DOW': dow,
+            'UPDATED_WIDGETS': updated_widgets,
+            # 'ALL': ClassroomSchedule.objects.all().
+        })
