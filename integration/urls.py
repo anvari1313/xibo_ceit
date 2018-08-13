@@ -9,6 +9,7 @@ from .views.tick import MinuteTicker
 from .views.template_text import TemplateTextView
 from .views.thesis import ThesisView
 from .views.hallway import HallwayPropagationThesisView
+from .views.image_upload import UploadImage
 from django.views.generic import TemplateView
 from .views.classroom import ClassRoomView, ClassRoomTable, ClassRoomTableThesis, BulkClassScheduling, BulkClassSchedulingFile
 from util.http_helper import method_dispatch
@@ -31,8 +32,9 @@ urlpatterns = [
 
     path('template/teaching/', TeachingTemplateView.as_view(), name='template.teaching'),
     path('hallway/propagation/thesis/', HallwayPropagationThesisView.as_view(), name='hallway.propagation.thesis'),
-    # Refactor finished
 
+    # Refactor finished
+    path('upload/image/', UploadImage.as_view(), name='upload.image'),
 
     url(r'tick/every/minute/$', MinuteTicker.as_view(), name='tick.minute'),
     path('classroom/rclass/<int:classroom_id>/', ClassRoomTable.as_view(), name="classroom.class_id"),
