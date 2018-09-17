@@ -28,8 +28,8 @@ class Widget(models.Model):
 
 class HallwayPropagationThesisSchedule(models.Model):
     student_name = models.CharField(max_length=120)
-    teacher_name = models.CharField(max_length=120)
-    judge_teacher_name1 = models.CharField(max_length=120)
+    teacher_name = models.CharField(max_length=120) # Supervisor
+    judge_teacher_name1 = models.CharField(max_length=120) # Referee
     judge_teacher_name2 = models.CharField(max_length=120, null=True)
     judge_teacher_name3 = models.CharField(max_length=120, null=True)
     holding_year = models.IntegerField()
@@ -60,6 +60,20 @@ class ClassRoom(models.Model):
     def __str__(self):
         return 'name: ' + str(self.name) + ', display'
 
+
+class Thesis(models.Model):
+    student_name = models.CharField(max_length=120)
+    teacher_name = models.CharField(max_length=120)  # Supervisor
+    judge_teacher_name1 = models.CharField(max_length=120)  # Referee
+    judge_teacher_name2 = models.CharField(max_length=120, null=True)
+    judge_teacher_name3 = models.CharField(max_length=120, null=True)
+    holding_year = models.IntegerField()
+    holding_month = models.IntegerField()
+    holding_day = models.IntegerField()
+    holding_hour = models.IntegerField()
+    holding_minute = models.IntegerField()
+    place = models.CharField(max_length=120, null=True)
+    
 
 class ClassroomSchedule(models.Model):
     teacher_name = models.CharField(max_length=200)

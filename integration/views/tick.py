@@ -4,6 +4,7 @@ from integration.models import ClassroomSchedule
 from xibo.requests import XiboRest
 import integration.globs
 import jdatetime
+import datetime
 
 
 class MinuteTicker(View):
@@ -11,7 +12,7 @@ class MinuteTicker(View):
         _now = str(jdatetime.datetime.now())
         dow = jdatetime.datetime.now().weekday()
         print(dow)
-        now = jdatetime.datetime.now()
+        now = datetime.datetime.now()
         # schedule_lists = TaskSchedule.objects.filter(
         #     task_datetime_hour=now.hour,
         #     task_datetime_min=now.minute,
@@ -25,9 +26,22 @@ class MinuteTicker(View):
             start_time_min=now.minute,
             week_day=dow)
 
+        for o in classroom_schedules:
+            print(o)
+
+        # s.week_day == dow and
+        print('----------------------------------')
+        for s in ClassroomSchedule.objects.all():
+            print(s.start_time_hour, now.hour)
+            print(s.start_time_min , now.minute)
+            if s.start_time_hour == now.hour and s.start_time_min == now.minute:
+                print(s)
+
+
         updated_widgets = []
 
         for classroom_schedule in classroom_schedules:
+            print(classroom_schedule)
             teacher_widget_id = classroom_schedule.classroom.teacher_name_widget.widget_id
             teacher_name = classroom_schedule.teacher_name
             subject_widget_id = classroom_schedule.classroom.subject_name_widget.widget_id
