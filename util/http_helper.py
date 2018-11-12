@@ -1,15 +1,10 @@
 from django.http import HttpResponseNotAllowed
-from django.utils.cache import logger
+import logging
 
 
 def method_dispatch(**table):
     def invalid_method(request, *args, **kwargs):
-        logger.warning('Method Not Allowed (%s): %s', request.method, request.path,
-            extra= {
-                'status_code': 405,
-                'request': request
-            }
-        )
+        logging.warning("Method Not Allowed (%s): %s" %(request.method, request.path))
         return HttpResponseNotAllowed(table.keys())
 
     def d(request, *args, **kwargs):
