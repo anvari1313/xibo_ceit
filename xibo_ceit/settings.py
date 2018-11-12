@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import dotenv
+from dotenv import load_dotenv
 
-dotenv.load()   # Load the .env file
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'c5o324@gd0+v2w^7qrb$#60a6kyll&jx8*!(&4a$@pnb^42++f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(dotenv.get('DEBUG_FLAG'))
+DEBUG = bool(os.getenv('DEBUG_FLAG'))
 
-ALLOWED_HOSTS = [dotenv.get('HOST'), '127.0.0.1']
+ALLOWED_HOSTS = [os.getenv('HOST'), '127.0.0.1']
 
 
 # Application definition
@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'xibo_ceit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': dotenv.get('POSTGRES_DATABASE'),
-        'USER': dotenv.get('POSTGRES_USER'),
-        'PASSWORD': dotenv.get('POSTGRES_PASSWORD'),
-        'HOST': dotenv.get('POSTGRES_HOST', '127.0.0.1'),
-        'PORT': dotenv.get('POSTGRES_PORT', '5432'),
+        'NAME': os.getenv('POSTGRES_DATABASE'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST', '127.0.0.1'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
 

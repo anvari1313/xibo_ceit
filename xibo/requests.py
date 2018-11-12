@@ -1,12 +1,12 @@
 import requests
-import dotenv
+import os
 from .exception import CanNotAuthorize
 
-xibo_cms_domain = dotenv.get('XIBO_CMS_SERVER_PROTOCOL') + '://' + dotenv.get('XIBO_CMS_DOMAIN') + ':' + str(dotenv.get('XIBO_CMS_SERVER_PORT')) + dotenv.get('XIBO_CMS_ROOT_ROUTE', '')
+xibo_cms_domain = os.getenv('XIBO_CMS_SERVER_PROTOCOL') + '://' + os.getenv('XIBO_CMS_DOMAIN') + ':' + str(os.getenv('XIBO_CMS_SERVER_PORT')) + os.getenv('XIBO_CMS_ROOT_ROUTE', '')
 
-client_id = dotenv.get('XIBO_CLIENT_ID')
+client_id = os.getenv('XIBO_CLIENT_ID')
 
-client_secret = dotenv.get('XIBO_CLIENT_SECRET')
+client_secret = os.getenv('XIBO_CLIENT_SECRET')
 
 api_routes = {
     'authenticate': '/api/authorize/access_token',
